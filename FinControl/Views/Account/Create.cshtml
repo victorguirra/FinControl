@@ -1,0 +1,51 @@
+﻿@model FinControl.Models.Account;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h5>Nova Conta</h5>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">Nome Banco</label>
+                <input asp-for="BankName" class="form-control" required />
+                <span asp-validation-for="BankName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Tipo Conta</label>
+                <select name="accountType" id="accountType" class="form-control">
+                    <option selected disabled class="text-muted">Selecione uma opção</option>
+                    <option value="Conta Corrente">Conta Corrente</option>
+                    <option value="Conta Poupança">Conta Poupança</option>
+                    <option value="Conta Salário">Conta Salário</option>
+                </select>
+                <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Agência</label>
+                <input asp-for="BankBranch" class="form-control" required />
+                <span asp-validation-for="BankBranch" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Número da Conta</label>
+                <input asp-for="AccountNumber" class="form-control" required />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+</div>

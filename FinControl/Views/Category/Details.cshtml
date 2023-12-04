@@ -1,0 +1,27 @@
+﻿@model FinControl.Models.Category;
+@{
+    ViewData["Title"] = "Detalhes da Categoria";
+}
+
+<br />
+<h5>Detalhes da Categoria</h5>
+<hr />
+
+<b>Categoria:</b>
+<br />
+<span>@Model.Title</span>
+<br />
+<br />
+
+<b>Tipo:</b>
+<br />
+<span>@Model.Type</span>
+
+<br />
+<br />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+</form>

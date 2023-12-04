@@ -1,0 +1,54 @@
+﻿@model List<FinControl.Models.Account>
+@{
+    ViewData["Title"] = "Contas";
+}
+
+<br />
+<h5>Contas</h5>
+<hr />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Create" class="btn btn-secondary">Nova conta</a>
+    </div>
+</form>
+<br />
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th class="col-md-2">Banco</th>
+                <th class="col-md-2">Tipo Conta</th>
+                <th class="col-md-2">Agência</th>
+                <th class="col-md-3">Número da Conta</th>
+                <th class="col-md-3 action-header"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-md-2">@item.BankName</td>
+                    <td class="col-md-2">@item.AccountType</td>
+                    <td class="col-md-2">@item.BankBranch</td>
+                    <td class="col-md-3">@item.AccountNumber</td>
+                    <td class="col-md-3">
+                        <a class="btn btn-primary" href="~/Account/Details/@item.AccountId" title="Visualizar" style="font-size:14px;">
+                            Visualizar
+                        </a>
+
+                        <a class="btn btn-warning" href="~/Account/Edit/@item.AccountId" title="Editar" style="font-size:14px;">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-danger" href="~/Account/Delete/@item.AccountId" title="Deletar" style="font-size:14px;">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

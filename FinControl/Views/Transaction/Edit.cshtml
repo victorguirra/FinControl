@@ -1,0 +1,64 @@
+﻿@model FinControl.Models.Transaction;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h5>Editar Transação</h5>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="TransactionId" value="@Model.TransactionId" />
+
+            <div class="form-group">
+                <label class="control-label">Categoria</label>
+                <select id="category" name="CategoryId" class="form-control">
+                    <option value="0" disabled>Selecione uma categoria</option>
+
+                    @foreach (var item in ViewBag.Categories as List<FinControl.Models.Category>)
+                    {
+                        <option selected="@(item.CategoryId == Model.CategoryId)" value="@item.CategoryId">@item.Title</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Conta</label>
+                <select id="accountId" name="AccountId" class="form-control">
+                    <option value="0" disabled selected>Selecione uma opção</option>
+
+                    @foreach (var item in ViewBag.Accounts as List<FinControl.Models.Account>)
+                    {
+                        <option selected="@(item.AccountId == Model.AccountId)" value="@item.AccountId">@item.BankName - @item.AccountType</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Valor</label>
+                <input asp-for="Amount" class="form-control" type="number" value="@Model.Amount"/>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Anotação</label>
+                <input asp-for="Note" class="form-control" value="@Model.Note">
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Data</label>
+                <input asp-for="Date" class="form-control" type="date" value="@Model.Date.ToString("yyyy-MM-dd")">
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Editar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model FinControl.Models.Account;
+@{
+    ViewData["Title"] = "Detalhes da Conta";
+}
+
+<br />
+<h5>Detalhes da Conta</h5>
+<hr />
+
+<b>Banco:</b>
+<br />
+<span>@Model.BankName</span>
+<br />
+<br />
+
+<b>Tipo Conta:</b>
+<br />
+<span>@Model.AccountType</span>
+<br />
+<br />
+
+<b>Agência:</b>
+<br />
+<span>@Model.BankBranch</span>
+<br />
+<br />
+
+<b>Número Conta:</b>
+<br />
+<span>@Model.AccountNumber</span>
+<br />
+<br />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+</form>

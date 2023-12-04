@@ -1,0 +1,47 @@
+﻿@model FinControl.Models.Account;
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h5>Deletar Conta</h5>
+<hr />
+
+<b>Banco:</b>
+<br />
+<span>@Model.BankName</span>
+<br />
+<br />
+
+<b>Tipo Conta:</b>
+<br />
+<span>@Model.AccountType</span>
+<br />
+<br />
+
+<b>Agência:</b>
+<br />
+<span>@Model.BankBranch</span>
+<br />
+<br />
+
+<b>Número Conta:</b>
+<br />
+<span>@Model.AccountNumber</span>
+<br />
+<br />
+
+<span style="font-size:14px;">Deseja realmente excluir o registro?</span>
+<br />
+<span class="text-danger" style="font-size:14px;">OBS: Todos as transações dessa conta serão excluídas!</span>
+
+<br />
+<br />
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.AccountId" />
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        <input type="submit" value="Deletar" class="btn btn-danger" />
+    </div>
+</form>

@@ -1,0 +1,56 @@
+﻿@model List<FinControl.Models.Transaction>
+@{
+    ViewData["Title"] = "Transações";
+}
+
+<br />
+<h5>Transações</h5>
+<hr />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Create" class="btn btn-secondary">Nova transação</a>
+    </div>
+</form>
+<br />
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th class="col-md-2">Categoria</th>
+                <th class="col-md-2">Tipo Categoria</th>
+                <th class="col-md-2">Valor</th>
+                <th class="col-md-2">Conta</th>
+                <th class="col-md-1">Data</th>
+                <th class="col-md-3 action-header"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-md-2">@item.Category.Title</td>
+                    <td class="col-md-2">@item.Category.Type</td>
+                    <td class="col-md-2">@item.Amount.ToString("C2")</td>
+                    <td class="col-md-2">@item.Account.BankName</td>
+                    <td class="col-md-1">@item.Date.ToString("dd/MM/yyyy")</td>
+                    <td class="col-md-3">
+                        <a class="btn btn-primary" href="~/Transaction/Details/@item.TransactionId" title="Visualizar" style="font-size:14px;">
+                            Visualizar
+                        </a>
+
+                        <a class="btn btn-warning" href="~/Transaction/Edit/@item.TransactionId" title="Editar" style="font-size:14px;">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-danger" href="~/Transaction/Delete/@item.TransactionId" title="Deletar" style="font-size:14px;">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

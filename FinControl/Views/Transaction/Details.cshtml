@@ -1,0 +1,44 @@
+﻿@model FinControl.Models.Transaction;
+@{
+    ViewData["Title"] = "Detalhes da Transação";
+}
+
+<br />
+<h5>Detalhes da Transação</h5>
+<hr />
+
+<b>Descrição:</b>
+<br />
+<span>@Model.Note</span>
+<br />
+<br />
+
+<b>Categoria:</b>
+<br />
+<span>@Model.Category.Title</span>
+<br />
+<br />
+
+<b>Conta:</b>
+<br />
+<span>@Model.Account.BankName</span>
+<br />
+<br />
+
+<b>Valor:</b>
+<br />
+<span>@Model.Amount.ToString("C2")</span>
+<br />
+<br />
+
+<b>Data:</b>
+<br />
+<span>@Model.Date.ToString("dd/MM/yyyy")</span>
+<br />
+<br />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+</form>

@@ -1,0 +1,50 @@
+﻿@model List<FinControl.Models.Category>
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<br />
+<h5>Categorias</h5>
+<hr />
+
+<form>
+    <div class="form-group">
+        <a asp-action="Create" class="btn btn-secondary">Nova categoria</a>
+    </div>
+</form>
+<br />
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th class="col-md-3">Título</th>
+                <th class="col-md-3">Tipo</th>
+                <th class="col-md-3 action-header"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-md-3">@item.Title</td>
+                    <td class="col-md-3">@item.Type</td>
+                    <td class="col-md-3">
+                        <a class="btn btn-primary" href="~/Category/Details/@item.CategoryId" title="Visualizar" style="font-size:14px;">
+                            Visualizar
+                        </a>
+
+                        <a class="btn btn-warning" href="~/Category/Edit/@item.CategoryId" title="Editar" style="font-size:14px;">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-danger" href="~/Category/Delete/@item.CategoryId" title="Deletar" style="font-size:14px;">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

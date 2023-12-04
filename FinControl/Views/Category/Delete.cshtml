@@ -1,0 +1,26 @@
+﻿@model FinControl.Models.Category;
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h5>Deletar Categoria</h5>
+<hr />
+
+<span>Categoria: <b>@Model.Title</b></span>
+<br />
+<br />
+
+<span style="font-size:14px;">Deseja realmente excluir o registro?</span><br />
+<span class="text-danger" style="font-size:14px;">OBS: Todos as transações dessa categoria serão excluídas!</span>
+
+<br />
+<br />
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.CategoryId" />
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        <input type="submit" value="Deletar" class="btn btn-danger" />
+    </div>
+</form>

@@ -1,0 +1,36 @@
+﻿@model FinControl.Models.Category;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h5>Editar Categoria</h5>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+
+            <div class="form-group">
+                <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Despesa")" />
+                <label class="labelRadio" for="radioleft">Despesa</label>
+
+                <input type="radio" id="radiomiddle" name="Type" value="Income" checked="@(Model.Type=="Renda")" />
+                <label class="labelRadio" for="radiomiddle">Renda</label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" value="@Model.Title" required />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Editar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
